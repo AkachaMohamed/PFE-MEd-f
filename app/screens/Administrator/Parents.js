@@ -5,8 +5,6 @@ import Screen from "../../components/Screen";
 import ListItem from "../../components/ListItem";
 import ListItemSeparator from "../../components/ListItemSeparator";
 import ListItemDeleteAction from "../../components/ListItemDeleteAction";
-import ListItemUpdatAction from "../../components/ListItemUpdatAction";
-import colors from "../../config/colors";
 import {DataImport} from '../../api/database/affichage'
 import {DeleteData} from '../../api/database/suppression'
 const wait = (timeout) => {

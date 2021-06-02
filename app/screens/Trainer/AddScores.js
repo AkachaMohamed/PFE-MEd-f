@@ -1,15 +1,17 @@
 import React, {Component,useEffect,useState,useRef} from 'react';
-import { StyleSheet, Text, View,Button} from 'react-native';
-import Accordian from '../../components/Accordian'
+import { StyleSheet, Text, View,Button , TouchableOpacity , Image} from 'react-native';
+import Accordian from '../../components/Accordian';
 import  Colors  from '../../config/colors';
+import {DataImport} from '../../api/database/affichage';
+import {AddData} from '../../api/database/insertion';
 import {
   Form,
   FormField,
   FormPicker as Picker,
   SubmitButton
 } from "../../components/forms";
-//npm install -g expo-cli
-//@react-native-community/datetimepicker
+import { set } from 'react-native-reanimated';
+
 const menu =[
   { 
     title: 'Physique', 
@@ -24,35 +26,77 @@ const menu =[
   data: ['dribble']
   }
 ]
+//Importation de données apres refresh 
 
-const abonnes=['mohamed akacha','khalil elwaer','jamel akacha']
-export default function App() {
+//**************************************************
+
+export default function App(){
+//____******************************************fffffffffff 
+  /* function datum (){
+ const x = DataImport("abonnement").then((T)=>{
+      console.log("______________________________",T)
+      var donnees=[]
+     /*  T.forEach(element => {
+        donnees.push(element.prenom+" "+element.nom)
+        //console.log(element)
+      }); *//*
+      return T;
+      
+    })
+  return x ;
+  } */
+  function datum1 (){
+    const x = DataImport("criteres").then((T)=>{
+         //console.log("______________________________",T)
+         var donnees=[]
+        /*  T.forEach(element => {
+           donnees.push(element.prenom+" "+element.nom)
+           //console.log(element)
+         }); */
+         return T;
+         
+       })
+     return x ;
+     }
+
+  const[abonnes,setAbonnes]=useState(['mmm','ddddd'])
   const[currentAbonne,setCurrent]=useState(0)
-  function renderAccordians(){
-    const itemst = [];
+  const [items1,setItem] = useState([]);
+  const  renderAccordians=()=>{
+    if(items1.length==0)
+    {const itemst = [];
+    
+    let j=100;
+    let k=0
     let i=0
     for(const ab of abonnes)
     {
+      
+      i++
       const items=[]
       for (const item of menu) {
-        i++
-        console.log(i+'-------------')
+        k++
         items.push(
             <Accordian 
-            key={i}
+            key={k}
                 title = {item.title}
                 data = {item.data}
-                num={i}
+                num={i+j}
             />
         );
+        
       }
+      j=parseInt(j/100)*100+100
       itemst.push(items)
     }
+    
     setItem(itemst)
-    return itemst   
+    return itemst  
+  }
+  else
+  return items1 
   }
   const first=()=>{
-    console.log('fffffffffffffffffffffffffff')
     if(currentAbonne===0)
       return abonnes[0]
       return abonnes[currentAbonne];
@@ -63,35 +107,71 @@ export default function App() {
       setCurrent(currentAbonne+1)  
   }
   let previous=()=>{ 
-    console.log('pppppppppppppppppppppppp')  
+    console.log('pppppppppppppppppppppppp',currentAbonne-1)  
     if(currentAbonne>0)
       setCurrent(currentAbonne-1)
   }
-  const [items1,setItem] = useState([]);
-
  
 
-const handleSubmitted = ({ res, fields, form }) => {
+  function storeUser(table ,id,pl) {
+    var contenu=""
+    console.log("----------------------------------8888")
+    contenu=  AddData("evaluation",pl).then((reponse)=>{
+          return "ok ajout" 
+       })
+     
+   
+  }
 
-  form.reset() // resets "username" field to "admin"
-  next()
+const handleSubmitted = (values) => {
+  console.log(values)
+let x=items1
+storeUser("evaluation",id,{Scores:values})
+/* let y=abonnes
+y.shift() */
+
+/* let ca=currentAbonne
+
+
+if(ca==abonnes.length)
+setCurrent(abonnes.length-1)
+else
+setCurrent(++ca)
+console.log(currentAbonne)
+x.shift()
+setItem(x) */
+
+next()
+return true
 }
+
 return (
-  
-      <View style={styles.container}>
-        
+        <View style={styles.container}>
         {}
-        <Text>{abonnes[currentAbonne]}</Text>
-        <Button
-        title="Next"
-        onPress={()=>next()}
-        />
-        <Button
-        title="previous"
+       <View style={{ flexDirection: 'row',justifyContent: 'center'}}>
+        <TouchableOpacity
         onPress={()=>previous()}
-        />
+        >
+          <Image
+                source={require("../../assets/inf.jpg")}
+                style={{width: 50, height: 30,borderRadius: 42 , marginLeft:-20}}
+               />
+
+        </TouchableOpacity>
+        <Text style={{fontSize:25}}>{abonnes[currentAbonne]}</Text>
+        <TouchableOpacity
+          onPress={()=>next()}
+        >
+          <Image
+                source={require("../../assets/sup.jpg")}
+                style={{width: 50, height: 30,borderRadius: 50}}
+               />
+
+        </TouchableOpacity>
+        </View>
+       
         <Form
-         onSubmit={handleSubmitted()}
+         onSubmit={handleSubmitted}
           initialValues={{
                                  
           }}
@@ -110,9 +190,10 @@ return (
 
 const styles = StyleSheet.create({
   container: {
+    
    flex:1,
    paddingTop:100,
-   backgroundColor:Colors.primary,
+   backgroundColor:Colors.white,
    
   }
 });

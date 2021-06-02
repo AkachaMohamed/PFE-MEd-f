@@ -17,7 +17,6 @@ import Updat_Ent from "../screens/SportManager/Updat_Ent";
 import Update_ad from "../screens/Administrator/Update_ad";
 import UpdateDS from "../screens/Administrator/Update_DS";
 import Welcome1 from "../screens/connexion/Welcome1";
-import AddScores from "../screens/Trainer/AddScores";
 import SpecialiteList from "../screens/SportManager/Specialite";
 import Update_spec from "../screens/SportManager/Update_spec";
 import Add_Criters from "../screens/SportManager/Add_Criters";
@@ -28,15 +27,14 @@ import Planninga from "../screens/Parent/Planning";
 import welcomeDS from "../screens/Parent/welcomePar"
 import account from "../screens/Parent/Account";
 import EvaluationFils from "../screens/Parent/Evaluationfils";
-import Evaluation from "../screens/Trainer/Evaluation";
 import confirmation from "../screens/Administrator/confirmation";
 import expiration from "../screens/Administrator/expiration";
 import presence from "../screens/Trainer/presence"; 
-import Icon from "../components/Icon";
+import AddScores from "../screens/Trainer/AddScores";
 
  const Tab = createBottomTabNavigator()
  const Drawer = createDrawerNavigator();
-const Stack = createStackNavigator();
+ const Stack = createStackNavigator();
 
 //-----------------------------le navigation de L'entreneur ----------------------------
 function Scores() {
@@ -56,7 +54,7 @@ function Trainers() {
 <Drawer.Navigator>
          <Drawer.Screen name="Acceuil" component={AcceuilAD} />
          <Drawer.Screen name="EvaluationScores" component={Scores} />
-         <Drawer.Screen name="Evaluation" component={Evaluation} />
+         <Drawer.Screen name="AddScores" component={AddScores} />
          <Drawer.Screen name="Presence" component={presence} />
        
       </Drawer.Navigator>
