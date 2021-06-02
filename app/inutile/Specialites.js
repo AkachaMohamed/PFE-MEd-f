@@ -5,11 +5,11 @@ import {
   Form,
   FormField,
    SubmitButton,
-} from "../../components/forms";
-import {AddData} from '../../api/database/insertion'
-import {UpdateData} from '../../api/database/miseajour'
+} from "../components/forms";
+import {AddData} from '../api/database/insertion'
+import {UpdateData} from '../api/database/miseajour'
 
-import Screen from "../../components/Screen";
+import Screen from "../components/Screen";
 const styles = StyleSheet.create({
   container: {
     padding: 10,

@@ -2,37 +2,37 @@ import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { MaterialCommunityIcons } from "@expo/vector-icons";
-import LoginScreen from "./LoginScreen";
-import RegisterScreen from "./RegisterScreen";
-import WelcomeScreen from "./WelcomeScreen";
+import LoginScreen from "../screens/connexion/LoginScreen";
+import RegisterScreen from "../screens/connexion/RegisterScreen";
+import WelcomeScreen from "../screens/connexion/WelcomeScreen";
 import { NavigationContainer } from "@react-navigation/native";
 import { createDrawerNavigator } from '@react-navigation/drawer';
-import Quinous from "./Quinous";
-import AcceuilAD from "../Administrator/AcceuilAD";
-import TrainersList from '../SportManager/TrainerList';
-import Listabonne from     "../Trainer/Abone"
-import SPManagers from '../Administrator/SPManagers';
-import AdminList from '../Administrator/Admins';
-import Updat_Ent from "../SportManager/Updat_Ent";
-import Update_ad from "../Administrator/Update_ad";
-import UpdateDS from "../Administrator/Update_DS";
-import Welcome1 from "./Welcome1";
-import AddScores from "../Trainer/AddScores";
-import SpecialiteList from "../SportManager/Specialite";
-import Update_spec from "../SportManager/Update_spec";
-import Add_Criters from "../SportManager/Add_Criters";
-import Planning from "../SportManager/Add_Planning";
-import welcomepar from "../Parent/welcomePar";
-import inscription from "../Parent/Inscription";
-import Planninga from "../Parent/Planning";
-import welcomeDS from "../Parent/welcomePar"
-import account from "../Parent/Account";
-import EvaluationFils from "../Parent/Evaluationfils";
-import Evaluation from "../Trainer/Evaluation";
-import confirmation from "../Administrator/confirmation";
-import expiration from "../Administrator/expiration";
-import presence from "../Trainer/presence"; 
-import Icon from "../../components/Icon";
+import Quinous from "../screens/connexion/Quinous";
+import AcceuilAD from "../screens/Administrator/AcceuilAD";
+import TrainersList from '../screens/SportManager/TrainerList';
+import Listabonne from     "../screens/Trainer/Abone"
+import SPManagers from '../screens/Administrator/SPManagers';
+import AdminList from '../screens/Administrator/Admins';
+import Updat_Ent from "../screens/SportManager/Updat_Ent";
+import Update_ad from "../screens/Administrator/Update_ad";
+import UpdateDS from "../screens/Administrator/Update_DS";
+import Welcome1 from "../screens/connexion/Welcome1";
+import AddScores from "../screens/Trainer/AddScores";
+import SpecialiteList from "../screens/SportManager/Specialite";
+import Update_spec from "../screens/SportManager/Update_spec";
+import Add_Criters from "../screens/SportManager/Add_Criters";
+import Planning from "../screens/SportManager/Add_Planning";
+import welcomepar from "../screens/Parent/welcomePar";
+import inscription from "../screens/Parent/Inscription";
+import Planninga from "../screens/Parent/Planning";
+import welcomeDS from "../screens/Parent/welcomePar"
+import account from "../screens/Parent/Account";
+import EvaluationFils from "../screens/Parent/Evaluationfils";
+import Evaluation from "../screens/Trainer/Evaluation";
+import confirmation from "../screens/Administrator/confirmation";
+import expiration from "../screens/Administrator/expiration";
+import presence from "../screens/Trainer/presence"; 
+import Icon from "../components/Icon";
 
  const Tab = createBottomTabNavigator()
  const Drawer = createDrawerNavigator();

@@ -10,6 +10,7 @@ import Icon from "react-native-vector-icons/MaterialIcons";
   } from "./app/components/forms" */
   
   import InputText from './forms/FormField2';
+import { ScrollView } from 'react-native-gesture-handler';
  
 export default class Accordian extends Component{
 
@@ -31,27 +32,28 @@ export default class Accordian extends Component{
   render() {
 
     return (
+        
        <View>
             <TouchableOpacity style={styles.row} onPress={()=>this.toggleExpand()}>
                 <Text style={[styles.title]}>{this.props.title}</Text>
-                <Icon name={this.state.expanded ? 'keyboard-arrow-up' : 'keyboard-arrow-down'} size={30} color={Colors.DARKGRAY} />
+                <Icon name={this.state.expanded ? 'keyboard-arrow-up' : 'keyboard-arrow-down'} size={30} color={Colors.black} />
             </TouchableOpacity>
             <View style={styles.parentHr}/>
             {
                 this.state.expanded &&
                 <View style={{}}>
                     {
+                      
                         this.state.data.map((input, i) => {
                             console.log(input+i+this.props.num+"*-*-*-*-")
                             return (
                                 <InputText
-                                key={input.replace(" ","_")+i+this.props.num}
+                                key={input+this.props.num}
                                 keyboardType="numeric"
-                                maxLength={8}
+                                maxLength={2}
                                 name={input+this.props.num}
-
                                 placeholder={input+this.props.num}
-                                width={120}
+                                width={"100%"}
                                 />
                             )
                         })
@@ -62,6 +64,7 @@ export default class Accordian extends Component{
             }
             
        </View>
+       
     )
   }
 
@@ -94,21 +97,21 @@ const styles = StyleSheet.create({
     title:{
         fontSize: 14,
         fontWeight:'bold',
-        color: Colors.DARKGRAY,
+        color: Colors.black,
     },
     itemActive:{
         fontSize: 12,
-        color: Colors.GREEN,
+        color: Colors.secondary,
     },
     itemInActive:{
         fontSize: 12,
-        color: Colors.DARKGRAY,
+        color: Colors.primary,
     },
     btnActive:{
-        borderColor: Colors.GREEN,
+        borderColor: Colors.secondary,
     },
     btnInActive:{
-        borderColor: Colors.DARKGRAY,
+        borderColor: Colors.primary,
     },
     row:{
         flexDirection: 'row',
@@ -117,12 +120,12 @@ const styles = StyleSheet.create({
         paddingLeft:25,
         paddingRight:18,
         alignItems:'center',
-        backgroundColor: Colors.CGRAY,
+        backgroundColor: Colors.secondary,
     },
     childRow:{
         flexDirection: 'row',
         justifyContent:'space-between',
-        backgroundColor: Colors.GRAY,
+        backgroundColor: Colors.secondary,
     },
     parentHr:{
         height:1,
@@ -130,14 +133,14 @@ const styles = StyleSheet.create({
     },
     childHr:{
         height:1,
-        backgroundColor: Colors.LIGHTGRAY,
+        backgroundColor: Colors.secondary,
         width:'100%',
     },
     colorActive:{
-        borderColor: Colors.GREEN,
+        borderColor: Colors.secondary
     },
     colorInActive:{
-        borderColor: Colors.DARKGRAY,
+        borderColor: Colors.secondary,
     }
     
 });

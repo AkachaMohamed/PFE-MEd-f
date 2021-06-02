@@ -12,17 +12,7 @@ import {DeleteData} from '../../api/database/suppression'
 const wait = (timeout) => {
   return new Promise(resolve => setTimeout(resolve, timeout));
 }
-let initialdatas = [
-  {
-    id: 1,
-     prenom: "Akacha ",
-     nom: "Mohamed",
-    mail: "Akachamohamed321@gmail.com",
-    tel: "529458785",
-    
-    image: require("../../assets/User2.jpg"),
-  }
-];
+
 const buttonClickded = () => {
     Alert.alert(
       "Alert nom",
@@ -39,7 +29,7 @@ const buttonClickded = () => {
       { cancelable: false }
     );
 };
-const ParentsScreen=(props)=> {
+const parentScreen=(props)=> {
  
   //state management
   const [data1, setData] = useState(null);
@@ -47,7 +37,7 @@ const ParentsScreen=(props)=> {
   const [loading, setLoading] = useState(true);
   const onRefresh = React.useCallback(() => {
   //Importation de données apres refresh 
-  const datum =  DataImport("Parents").then((ee)=>{
+  const datum =  DataImport("parents").then((ee)=>{
       setData(ee);
       setRefreshing(false);
       setRefreshing(false)
@@ -59,7 +49,7 @@ const ParentsScreen=(props)=> {
     const x=DeleteData("parents",data).then((reponse)=>{ 
       Alert.alert(
         "",
-        "Parent supprimé avec succès",
+        "Parents supprimé avec succès",
         [
           { text: "OK"}
         ],
@@ -95,7 +85,7 @@ const ParentsScreen=(props)=> {
  {
   return (
     <Screen>
-      <View><Text>Aucun Parent dans la base de données</Text></View>
+      <View><Text>Aucun Entraineur dans la base de données</Text></View>
       <ScrollView refreshControl={
         <RefreshControl
           refreshing={refreshing}
@@ -103,16 +93,7 @@ const ParentsScreen=(props)=> {
         />
       } > 
       </ScrollView>
-      <TouchableOpacity
       
-          activeOpacity={1.0}
-          onPress={()=>props.navigation.navigate("Update_par")}
-          style={styles.touchableOpacityStyle}>
-          <Image
-            source={require('../../assets/addbtn.png')}
-            style={styles.floatingButtonStyle}
-          />
-        </TouchableOpacity> 
     </Screen>
     );
  }
@@ -121,12 +102,12 @@ return (
   <ScrollView refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh}/>}> 
     <FlatList       
         data={data1}
-        keyExtractor={(dat) => dat.mail.toString()}
+        //keyExtractor={(dat) => dat.mail.toString()}
         renderItem={({ item }) => (
           <ListItem
-            nom={item.prenom +" "+ item.nom }
+            nom={item.prenom +" "+ item.nom +" (NomC:"+item.nomc+")"}
             mail={item.mail}
-            tel={item.tel}
+            tel={item.tel +"(TelC:"+item.telc+")"}
             image={require("../../assets/User2.jpg")}
             renderRightActions={() => (   
               <View> 
@@ -134,9 +115,7 @@ return (
                  onPress={() =>handleDelete(item)}
                />
                <ListItemSeparator/>
-               <ListItemUpdatAction 
-                 onPress={() =>props.navigation.navigate("Update_par",{item:item})}
-               />
+               
                </View>
             )}
           />
@@ -145,16 +124,7 @@ return (
         
       />
       </ScrollView>
-      <TouchableOpacity
       
-          activeOpacity={1.0}
-          onPress={()=>props.navigation.navigate("Update_par")}
-          style={styles.touchableOpacityStyle}>
-          <Image
-            source={require('../../assets/addbtn.png')}
-            style={styles.floatingButtonStyle}
-          />
-        </TouchableOpacity> 
     </Screen>
   );    
 }
@@ -175,4 +145,4 @@ const styles = StyleSheet.create({
       }
 });
 
-export default ParentsScreen;
+export default parentScreen;

@@ -9,6 +9,7 @@ import {
   SubmitButton,
 } from "../../components/forms";
 import sepecialitePickerItem from "../../components/CategoryPickerItem";
+import {  Menu, Divider, Provider } from 'react-native-paper';
 import {AddData} from '../../api/database/insertion'
 class MyClass extends Component {
 
@@ -186,9 +187,15 @@ console.log('********************************************************')
     
      
   }
-
+  
   render(){
+ 
     return(
+      //const [visible, setVisible] = React.useState(false);
+
+     // const openMenu = () => setVisible(true);
+    
+     // const closeMenu = () => setVisible(false);
       <Screen>
         <View style={{margin: 10}}>
         <Form
@@ -197,6 +204,40 @@ console.log('********************************************************')
         }}
         onSubmit={this.getValues}
         >
+       
+        <SubmitButton title= "Enregistrer" style={{ backgroundColor: "#fc5c65",borderRadius: 25, justifyContent: "center",alignItems: "center",padding: 15,width: "50%",height:50, marginVertical: 10,}}/>
+        <View style={styles.row}>
+          <TouchableOpacity
+         onPress={() => this.addCatInput(this.state.textInput.length)}
+         style={{ backgroundColor: "#fc5c65",borderRadius: 25, justifyContent: "center",alignItems: "center",padding: 15,width: "25%",height:50, marginVertical: 10,}}
+        >
+          <Text style ={{color: "#fff"}}> + Catégorie </Text>
+
+        </TouchableOpacity>
+        <TouchableOpacity
+         onPress={() => this.addTextInput(this.state.textInput.length)}
+         style={{ backgroundColor: "#fc5c65",borderRadius: 25, justifyContent: "center",alignItems: "center",padding: 15,width: "20%",height:50, marginVertical: 10,margin:10}}
+        >
+          <Text style ={{color: "#fff"}}> + Critère </Text>
+
+        </TouchableOpacity>
+        <TouchableOpacity
+         onPress={() => this.removeTextInput()}
+         style={{ backgroundColor: "#fc5c65",borderRadius: 25, justifyContent: "center",alignItems: "center",padding: 15,width: "25%",marginVertical: 10,}}
+        >
+          <Text style ={{color: "#fff"}}> Remove </Text>
+
+        </TouchableOpacity>
+        <Menu
+          visible={visible}
+          onDismiss={closeMenu}
+          anchor={<Button onPress={openMenu}>Show menu</Button>}>
+          <Menu.Item onPress={() => {}} title="Item 1" />
+          <Menu.Item onPress={() => {}} title="Item 2" />
+          <Divider />
+          <Menu.Item onPress={() => {}} title="Item 3" />
+        </Menu>
+        </View>
         <Picker
           items={this.state.categories}
           name="speciality"
@@ -206,21 +247,6 @@ console.log('********************************************************')
           
           width="50%"
         /> 
-        <SubmitButton title= "Enregistrer" />
-          <TouchableOpacity
-         onPress={() => this.addCatInput(this.state.textInput.length)}
-         style={{ backgroundColor: "#fc5c65",borderRadius: 25, justifyContent: "center",alignItems: "center",padding: 15,width: "100%",marginVertical: 10,}}
-        >
-          <Text style ={{color: "#fff"}}> + Catégorie </Text>
-
-        </TouchableOpacity>
-        <TouchableOpacity
-         onPress={() => this.addTextInput(this.state.textInput.length)}
-         style={{ backgroundColor: "#fc5c65",borderRadius: 25, justifyContent: "center",alignItems: "center",padding: 15,width: "100%",marginVertical: 10,}}
-        >
-          <Text style ={{color: "#fff"}}> + Critère </Text>
-
-        </TouchableOpacity>
 </Form>
         </View>
         <ScrollView>
@@ -233,7 +259,7 @@ console.log('********************************************************')
         
       </View>
       </ScrollView>
-      <View style= {styles.row}>
+      {/* <View style= {styles.row}>
           
         <View style={{margin: 10}}>
         <TouchableOpacity
@@ -253,7 +279,7 @@ console.log('********************************************************')
 
         </TouchableOpacity>
        
-        </View>
+        </View> */}
       </Screen>
     )
   }

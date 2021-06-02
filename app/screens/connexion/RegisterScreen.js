@@ -91,8 +91,10 @@ function RegisterScreen() {
             textContentType="emailAddress"
           />
           <FormField
+            maxLength={8}
             autoCapitalize="none"
             autoCorrect={false}
+            keyboardType="numeric"
             icon="phone"
             name="phone"
             placeholder="Téléphone"
