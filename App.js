@@ -1,4 +1,4 @@
-/*  import React, { useState } from "react";
+  import React, { useState } from "react";
 import { AppLoading } from "expo";
 import Connexion_Nav from "./app/navigation/ConnxionNav";
 import TrainerList from './app/screens/connexion/RegisterScreen';
@@ -20,17 +20,17 @@ import aluation from "./app/screens/Parent/Evaluationfils";
 
 export default function App() {
   return (
-  <AddPlanning/>
+  <Connexion_Nav/>
    );
    
 } 
-  */
-import React, {Component,useEffect,useState,useRef} from 'react';
+  
+/* import React, {Component,useEffect,useState,useRef} from 'react';
 import { StyleSheet, Text, View,Button , TouchableOpacity , Image} from 'react-native';
 import Accordian from './app/components/Accordian';
 import  Colors  from './app/config/colors';
 import {DataImport} from './app/api/database/affichage';
-
+import {AddData} from './app/api/database/insertion';
 import {
   Form,
   FormField,
@@ -115,10 +115,20 @@ export default function App(){
   }
  
 
- 
+  function storeUser(table ,id,pl) {
+    var contenu=""
+    console.log("----------------------------------8888")
+    contenu=  AddData("evaluation",pl).then((reponse)=>{
+          return "ok ajout" 
+       })
+     
+   
+  }
 
 const handleSubmitted = (values) => {
+  console.log(values)
 let x=items1
+storeUser("evluation",currentAbonne,{Scores:values})
 /* let y=abonnes
 y.shift() */
 
@@ -133,32 +143,30 @@ console.log(currentAbonne)
 x.shift()
 setItem(x) */
 
-next()
-return true
-}
+//next()
+//return true
+//}
+/*
 return (
-  
-      <View style={styles.container}>
-        
+        <View style={styles.container}>
         {}
-        
-        <View style={{ flexDirection: 'row',justifyContent: 'center'}}>
+       <View style={{ flexDirection: 'row',justifyContent: 'center'}}>
         <TouchableOpacity
-        onPress={()=>next()}
+        onPress={()=>previous()}
         >
           <Image
                 source={require("./app/assets/inf.jpg")}
-                style={{width: 50, height: 50,borderRadius: 42 , marginLeft:-20}}
+                style={{width: 50, height: 25,borderRadius: 42 , marginLeft:-20}}
                />
 
         </TouchableOpacity>
         <Text>{abonnes[currentAbonne]}</Text>
         <TouchableOpacity
-          onPress={()=>previous()}
+          onPress={()=>next()}
         >
           <Image
                 source={require("./app/assets/sup.jpg")}
-                style={{width: 50, height: 50,borderRadius: 50}}
+                style={{width: 50, height: 25,borderRadius: 50}}
                />
 
         </TouchableOpacity>
@@ -190,4 +198,4 @@ const styles = StyleSheet.create({
    backgroundColor:Colors.white,
    
   }
-});
+}); */

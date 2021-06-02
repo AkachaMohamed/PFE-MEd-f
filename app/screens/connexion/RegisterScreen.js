@@ -22,6 +22,7 @@ import useApi from "../../hooks/useApi";
 import ActivityIndicator from "../../components/ActivityIndicator";
 import { ScrollView } from "react-native-gesture-handler";
 import {AddData} from '../../api/database/insertion'
+import colors from "../../config/colors";
 
 const validationSchema = Yup.object().shape({
   name: Yup.string().required().label("Name"),
@@ -108,6 +109,7 @@ function RegisterScreen() {
             secureTextEntry
             textContentType="password"
           />
+          <Text style={{color:colors.secondary, fontSize : 17}}>les champs de conjoint son alternatives : </Text>
           <FormField
             autoCorrect={false}
             icon="account"
