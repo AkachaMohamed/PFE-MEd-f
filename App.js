@@ -20,7 +20,7 @@ import aluation from "./app/screens/Parent/Evaluationfils";
 
 export default function App() {
   return (
-  <Addcriteres/>
+  <AddPlanning/>
    );
    
 } 

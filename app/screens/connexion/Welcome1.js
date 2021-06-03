@@ -12,7 +12,7 @@ function Welcome1(props) {
         <ImageBackground source={require('../../assets/8.jpg')}
         style={styles.image}
         >
-    <ScrollView>
+    
            <TouchableOpacity
            activeOpacity={1.0}
            onPress={()=>props.navigation.navigate("Welcome")}
@@ -32,6 +32,7 @@ function Welcome1(props) {
              style={styles.Logo}
             />
         <Text style={{fontSize:25, color:colors.secondary , alignSelf:"center"}}> WELOME To Champions Steps</Text> 
+        <ScrollView>
         <View style={{width:"100%" , height: 250 , backgroundColor:"#fff" ,borderRadius: 20, alignItems:"center" , marginTop: 10}}>
           <Image
              style={{width:"100%" , height: "100%" ,borderRadius: 20}}

@@ -10,7 +10,7 @@ function ListItemUpdatAction({ onPress }) {
       <View style={styles.container}>
         <MaterialCommunityIcons
           name="close"
-          size={90}
+          size={100}
           color={colors.white}
         />
 
