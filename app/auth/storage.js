@@ -10,6 +10,13 @@ const storeToken = async (authToken) => {
     console.log("Error storing the auth token", error);
   }
 };
+const storeAttribute = async (key,value) => {
+  try {
+    await SecureStore.setItemAsync(key, value);
+  } catch (error) {
+    console.log("Error storing the auth token", error);
+  }
+};
 
 const getToken = async () => {
   try {

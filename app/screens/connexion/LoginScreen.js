@@ -12,7 +12,7 @@ import {
 import { ScrollView, TouchableOpacity } from "react-native-gesture-handler";
 import ActivityIndicator from "../../components/ActivityIndicator";
  import authApi from "../../api/auth";
-/*import useAuth from "../../auth/useAuth"; */
+import useAuth from "../../auth/useAuth"; 
 
 const validationSchema = Yup.object().shape({
   email: Yup.string().required().email().label("Email"),
@@ -20,7 +20,7 @@ const validationSchema = Yup.object().shape({
 });
 
 function LoginScreen(props) {
-  /* const auth = useAuth();*/
+  const auth = useAuth();
   const [loginFailed, setLoginFailed] = useState(false);
 
   const handleSubmit = async ({ email, password }) => {
@@ -32,7 +32,8 @@ function LoginScreen(props) {
       
     }
     setLoginFailed(false);
-    //auth.logIn(result.data);
+    console.log(result.email)
+    auth.logIn(result.tok.i);
 if(result.role=="Trainer")
 props.navigation.navigate("Admin")
 

@@ -8,7 +8,7 @@ const login = async (email, password)=>
  
 const user = firebase.auth().currentUser;
 if(user)
-return {role:user.displayName,email:user.email}
+return {role:user.displayName,email:user.email,tok:user.getIdToken()}
 else
 return false
 }).catch((error2)=>{
